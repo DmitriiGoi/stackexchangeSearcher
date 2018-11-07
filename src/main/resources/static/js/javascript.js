@@ -18,7 +18,7 @@ function searchFunction() {
             appendResponse(response)
         },
         error: function (xhr) {
-            logFail(xhr)
+            showFail(xhr)
         }
     })
 }
@@ -53,11 +53,12 @@ function appendNextResultFunction(){
             appendResponse(response)
         },
         error: function (xhr) {
-            logFail(xhr)
+            showFail(xhr)
         }
     })
 }
 
-function logFail(xhr) {
+function showFail(xhr) {
     div.append("<span style='background-color:red'>" + JSON.parse(xhr.responseText).error_message + "</span>");
+    $("#appendNextResultButton").hide();
 }
