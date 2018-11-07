@@ -22,10 +22,9 @@ import static com.example.stackoverflowSearcher.util.StackexchangeUriBuilder.get
 @Service
 public class ExternalStackOverflowServiceImpl implements ExternalStackOverflowService {
 
-    private Logger logger = LogManager.getLogger(ExternalStackOverflowService.class);
-
     @Autowired
     private RestTemplate restTemplate;
+
     @Value("${search.site}")
     private String site;
 
