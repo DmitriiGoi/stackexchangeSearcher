@@ -4,8 +4,6 @@ import com.example.stackoverflowSearcher.domain.SearchResponseDto;
 import com.example.stackoverflowSearcher.exception.SearcherException;
 import com.example.stackoverflowSearcher.service.external.ExternalStackOverflowService;
 import com.example.stackoverflowSearcher.util.Pageable;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;

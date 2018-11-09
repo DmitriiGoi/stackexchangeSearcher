@@ -2,7 +2,7 @@ package com.example.stackoverflowSearcher.exception;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class StackoverflowExceptionDto{
+public class StackoverflowExceptionDto {
 
     private int errorId;
     private String errorMessage;
