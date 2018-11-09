@@ -8,6 +8,13 @@ public class StackoverflowExceptionDto{
     private String errorMessage;
     private String errorName;
 
+    public StackoverflowExceptionDto() {
+    }
+
+    public StackoverflowExceptionDto(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
     @JsonProperty("error_id")
     public int getErrorId() {
         return errorId;

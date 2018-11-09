@@ -14,12 +14,18 @@ import java.io.IOException;
 
 @ControllerAdvice
 public class ControllersExceptionAdvice {
+    private static final String UNABLE_TO_PARSE_EXCEPTION = "unable to parse exception";
     private Logger logger = LogManager.getLogger(ControllersExceptionAdvice.class);
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @ExceptionHandler(SearcherException.class)
-    public ResponseEntity<StackoverflowExceptionDto> handleRuntimeException(SearcherException ex) throws IOException {
+    public ResponseEntity<StackoverflowExceptionDto> handleRuntimeException(SearcherException ex) {
         logger.error(ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(objectMapper.readValue(ex.getMessage(), StackoverflowExceptionDto.class));
+        try {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(objectMapper.readValue(ex.getMessage(), StackoverflowExceptionDto.class));
+        } catch (IOException e) {
+            logger.debug(UNABLE_TO_PARSE_EXCEPTION, e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new StackoverflowExceptionDto(UNABLE_TO_PARSE_EXCEPTION));
+        }
     }
 }
